@@ -1,0 +1,10 @@
+{
+  "name": "utube",
+  "version": "1.0.0",
+  "description": "Learning Node.js, Express, Pug and MongoDB by building a video streaming web app like YouTube",
+  "main": "index.js",
+  "author": "Mina Park",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
