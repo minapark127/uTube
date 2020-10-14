@@ -7,7 +7,7 @@ export const localsMiddleware = (req, res, next) => {
   res.locals.fontAwesomeKey = fontAwesomeKey;
   //test user
   res.locals.user = {
-    isAuthenticated: true,
+    isAuthenticated: false,
     id: 1234,
   };
   next();
