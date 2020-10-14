@@ -1,8 +1,15 @@
 header.header
-    .header__logo
-        h1 #{siteName}
-    .header__nav
+    .header__column
+        h1
+            a(href="/") #{siteName}
+    .header__column
+        form(action=routes.search, method="get")
+            input(type="text", name="term", placeholder="Search")
+            input(type="submit", value="🔍")
+    .header__column
         nav
             ul
-                li Join
-                li Login
+                li 
+                    a(href=routes.join) Join
+                li
+                    a(href=routes.login) Log In
