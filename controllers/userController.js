@@ -22,8 +22,8 @@ export const getLogin = (req, res) =>
 export const postLogin = (req, res) => res.redirect(routes.home);
 // need to do: check pw
 
-export const logout = (req, res) =>
-  res.render("logout", { pageTitle: "Log Out" });
+export const logout = (req, res) => res.redirect(routes.home);
+// need to do : process log out
 
 export const editProfile = (req, res) =>
   res.render("editProfile", { pageTitle: "Edit Profile" });
