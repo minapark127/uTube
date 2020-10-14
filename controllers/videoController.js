@@ -10,6 +10,7 @@ export const search = (req, res) => {
   res.render("search", {
     pageTitle: `${searchTerm ? searchTerm : "Search"}`,
     searchTerm,
+    videos,
   });
 };
 
