@@ -27,7 +27,13 @@ const routes = {
   user: USER,
   editProfile: EDIT_PROFILE,
   changePw: CHANGE_PW,
-  userDetail: USER_DETAIL,
+  userDetail: (id) => {
+    if (id) {
+      return `/user/${id}`;
+    } else {
+      return USER_DETAIL;
+    }
+  },
   videos: VIDEOS,
   upload: UPLOAD,
   videoDetail: VIDEO_DETAIL,
