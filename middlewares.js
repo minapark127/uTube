@@ -6,7 +6,7 @@ export const localsMiddleware = (req, res, next) => {
   res.locals.env = process.env;
   //test user
   res.locals.user = {
-    isAuthenticated: false,
+    isAuthenticated: true,
     id: 1234,
   };
   next();
