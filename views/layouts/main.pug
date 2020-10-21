@@ -6,6 +6,7 @@ html
         href="https://use.fontawesome.com/releases/v5.15.1/css/all.css",
         integrity=FONTAWESOME_KEY,
         crossorigin="anonymous")
+        link(rel="stylesheet", href="/static/styles.css")
 
     body
         include ../partials/header
@@ -13,3 +14,4 @@ html
             block content
 
             include ../partials/footer
+        script(src="/static/main.js")
