@@ -13,12 +13,20 @@ export const home = async (req, res) => {
 };
 
 // search
-export const search = (req, res) => {
+export const search = async (req, res) => {
   const {
     query: { term: searchTerm },
   } = req;
+  let videos = [];
+  try {
+    videos = await Video.find({
+      title: { $regex: searchTerm, $options: "i" },
+    });
+  } catch (error) {
+    console.log(error);
+  }
   res.render("search", {
-    pageTitle: `${searchTerm ? searchTerm : "Search"}`,
+    pageTitle: `${!searchTerm ? "Search" : `result for "${searchTerm}"`}`,
     searchTerm,
     videos,
   });
