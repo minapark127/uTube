@@ -1,9 +1,10 @@
 import Video from "../models/Video";
 import routes from "../routes";
 
+// home
 export const home = async (req, res) => {
   try {
-    const videos = await Video.find({});
+    const videos = await Video.find({}).sort({ _id: -1 });
     res.render("home", { pageTitle: "Home", videos });
   } catch (error) {
     console.log(error);
@@ -11,6 +12,7 @@ export const home = async (req, res) => {
   }
 };
 
+// search
 export const search = (req, res) => {
   const {
     query: { term: searchTerm },
@@ -22,6 +24,7 @@ export const search = (req, res) => {
   });
 };
 
+// upload
 export const getUpload = (req, res) =>
   res.render("upload", { pageTitle: "Upload" });
 
@@ -38,6 +41,7 @@ export const postUpload = async (req, res) => {
   res.redirect(routes.videoDetail(newVideo.id));
 };
 
+// video detail
 export const videoDetail = async (req, res) => {
   const {
     params: { id },
@@ -50,6 +54,8 @@ export const videoDetail = async (req, res) => {
     res.redirect(routes.home);
   }
 };
+
+// edit
 export const getEditVideo = async (req, res) => {
   const {
     params: { id },
@@ -77,5 +83,18 @@ export const postEditVideo = async (req, res) => {
   }
 };
 
-export const deleteVideo = (req, res) =>
-  res.render("deleteVideo", { pageTitle: "Delete Video" });
+// delete
+export const deleteVideo = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    // const video = await Video.findById(id);
+    // res.render("deleteVideo", { pageTitle: "Deleting..." }, video);
+    await Video.findOneAndRemove({ _id: id });
+  } catch (error) {
+    console.log(error);
+  } finally {
+    res.redirect(routes.home);
+  }
+};
