@@ -1,23 +1,25 @@
 header.header
-    .header__column
-        h1
-            a(href="/") #{siteName}
-    .header__column
-        form(action=routes.search, method="get")
-            input(type="text", name="term", placeholder="Search")
-            input(type="submit", value="🔍")
-    .header__column
-        nav
-            ul
-                if !user.isAuthenticated
-                    li 
-                        a(href=routes.join) Join
-                    li
-                        a(href=routes.login) Log In
-                else
-                    li 
-                        a(href=`/videos${routes.upload}`) Upload
-                    li
-                        a(href=routes.userDetail(user.id)) Profile
-                    li
-                        a(href=routes.logout) Log Out
+    .header__wrapper
+        .header__column
+            a(href="/").logo
+                i.fas.fa-play-circle
+                h1 #{siteName}
+        .header__column
+            form(action=routes.search, method="get")
+                input(type="text", name="term", placeholder="Search")
+                input(type="submit", value="🔍")
+        .header__column
+            nav
+                ul
+                    if !user.isAuthenticated
+                        a 
+                            li(href=routes.join) Join
+                        a
+                            li(href=routes.login) Log In
+                    else
+                        a 
+                            li(href=`/videos${routes.upload}`) Upload
+                        a
+                            li(href=routes.userDetail(user.id)) Profile
+                        a
+                            li(href=routes.logout) Log Out

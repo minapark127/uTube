@@ -1,5 +1,6 @@
-body {
-  footer {
-    background-color: red;
-  }
-}
+@import "./config/reset.scss";
+@import "./config/_variables.scss";
+
+@import "main.scss";
+
+@import "./partials/header.scss";
