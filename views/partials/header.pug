@@ -12,14 +12,14 @@ header.header
             nav
                 ul
                     if !user.isAuthenticated
-                        a 
-                            li(href=routes.join) Join
-                        a
-                            li(href=routes.login) Log In
+                        a(href=routes.join)
+                            li Join
+                        a(href=routes.login)
+                            li Log In
                     else
-                        a 
-                            li(href=`/videos${routes.upload}`) Upload
-                        a
-                            li(href=routes.userDetail(user.id)) Profile
-                        a
-                            li(href=routes.logout) Log Out
+                        a(href=`/videos${routes.upload}`)
+                            li Upload
+                        a(href=routes.userDetail(user.id))
+                            li Profile
+                        a(href=routes.logout)
+                            li Log Out

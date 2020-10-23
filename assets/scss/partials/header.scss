@@ -87,27 +87,28 @@
           height: 100%;
           width: 100%;
           display: flex;
-          justify-content: space-around;
+          justify-content: flex-end;
+          align-items: center;
           a {
-            width: 100%;
+            width: 100px;
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             border-bottom: 3.5px solid transparent;
             transition: border-bottom 0.2s ease-in;
+            &:hover {
+              border-bottom: 3.5px solid $red;
+              li {
+                color: $red;
+              }
+            }
             li {
               width: 100%;
               text-align: center;
               color: $black;
               font-weight: 500;
               transition: color 0.2s linear;
-            }
-            &:hover {
-              border-bottom: 3.5px solid $red;
-              li {
-                color: $red;
-              }
             }
           }
         }
