@@ -1,0 +1,3 @@
+@mixin buttonDarker($color) {
+  background-color: darken($color: $color, $amount: 10);
+}
