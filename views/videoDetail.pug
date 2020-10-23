@@ -1,14 +1,17 @@
 extends layouts/main
 
 block content
-    .video__player
-        video(src=`/${video.fileUrl}`)
-    .video__info
-        a(href=routes.editVideo(video.id)) Edit Video
-        h1.video__info-title=video.title
-        span.video__info-views #{video.views} views
-        h2.video__info-description=video.description
-        if video.comments.length === 1
-            span.video__info-comments 1 comment
-        else
-            span.video__info-comments #{video.comments.length} comments 
+    .videoDetail
+        .videoDetail__player
+            video(src=`/${video.fileUrl}`)
+        .videoDetail__info
+            a(href=routes.editVideo(video.id)).videoDetail__info-edit 
+                i.far.fa-edit
+                span Edit Video
+            h1.videoDetail__info-title=video.title
+            span.videoDetail__info-views #{video.views} views
+            h2.videoDetail__info-description=video.description
+            if video.comments.length === 1
+                span.videoDetail__info-comments 1 comment
+            else
+                span.videoDetail__info-comments #{video.comments.length} comments 

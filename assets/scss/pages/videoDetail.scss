@@ -1,0 +1,59 @@
+.videoDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & > * {
+    width: 100%;
+    max-width: 780px;
+  }
+  &__player {
+    margin-bottom: 25px;
+    video {
+      width: 100%;
+    }
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    &-edit {
+      align-self: flex-end;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 120px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: $darkRed;
+      color: $white;
+      transition: background-color 0.2s linear;
+      i {
+        margin-right: 10px;
+      }
+      span {
+        font-size: 16px;
+      }
+      &:hover {
+        @include buttonDarker($darkRed);
+      }
+    }
+    &-title {
+      font-size: 25px;
+      margin-bottom: 25px;
+    }
+    &-views {
+      font-size: 18px;
+      color: lighten($color: $black, $amount: 20);
+      padding-bottom: 20px;
+      border-bottom: 0.5px solid lighten($color: $borderGrey, $amount: 10);
+    }
+    &-description {
+      font-size: 18px;
+      padding: 20px 0;
+      border-bottom: 0.5px solid lighten($color: $borderGrey, $amount: 10);
+    }
+    &-comments {
+      padding: 20px 0;
+      font-size: 20px;
+    }
+  }
+}
