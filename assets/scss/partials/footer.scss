@@ -1,0 +1,41 @@
+.footer {
+  height: calc(100vh - 80vh - 70px);
+  border-top: 3px solid rgba($color: $borderGrey, $alpha: 0.3);
+  //   box-shadow: inset $greyBorderShadow;
+
+  ul {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 2;
+
+    li {
+      a {
+        color: $black;
+        font-size: 15px;
+      }
+
+      &:first-child {
+        a:hover {
+          border-bottom: 1px dashed $black;
+        }
+      }
+
+      &:last-child {
+        a {
+          i {
+            font-size: 23px;
+          }
+          &:last-child {
+            margin-left: 8px;
+          }
+          &:hover {
+            color: lighten($color: $black, $amount: 25);
+          }
+        }
+      }
+    }
+  }
+}
