@@ -16,5 +16,12 @@ body {
     min-height: 80vh;
     margin: 0 auto;
     padding-top: 50px;
+    button {
+      width: 100%;
+      padding: 8px 20px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   }
 }
