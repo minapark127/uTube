@@ -1,0 +1,15 @@
+.videoBlock {
+  width: 100%;
+  &__thumbnail {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  &__title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    a {
+      color: $black;
+    }
+  }
+}

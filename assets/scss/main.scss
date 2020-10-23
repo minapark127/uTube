@@ -13,9 +13,10 @@ body {
 
   main {
     width: 100%;
+    max-width: 1200px;
     min-height: 80vh;
     margin: 0 auto;
-    padding-top: 50px;
+    padding: 50px 10px 150px 10px;
     button {
       width: 100%;
       padding: 8px 20px;
