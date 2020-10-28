@@ -2,6 +2,7 @@ import passport from "passport";
 import routes from "../routes";
 import User from "../models/User";
 
+// join
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 
 export const postJoin = async (req, res, next) => {
@@ -19,10 +20,10 @@ export const postJoin = async (req, res, next) => {
     } catch (error) {
       console.log(error);
     }
-    // res.redirect(routes.home);
   }
 };
 
+// log in
 export const getLogin = (req, res) =>
   res.render("login", { pageTitle: "Log In" });
 
@@ -30,8 +31,8 @@ export const postLogin = passport.authenticate("local", {
   failureRedirect: routes.login,
   successRedirect: routes.home,
 });
-// need to do: check pw
 
+// log out
 export const logout = (req, res) => res.redirect(routes.home);
 // need to do : process log out
 
