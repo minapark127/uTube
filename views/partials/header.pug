@@ -11,7 +11,7 @@ header.header
         .header__column
             nav
                 ul
-                    if !user.isAuthenticated
+                    if !user
                         a(href=routes.join)
                             li Join
                         a(href=routes.login)
