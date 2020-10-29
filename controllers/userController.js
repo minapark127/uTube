@@ -32,12 +32,29 @@ export const postLogin = passport.authenticate("local", {
   successRedirect: routes.home,
 });
 
+// Github log in
+export const githubLogin = passport.authenticate("github", {
+  scope: ["user:email"],
+});
+
+export const githubLoginCallback = (
+  accessToken,
+  refreshToken,
+  profile,
+  done
+) => {
+  console.log(accessToken, refreshToken, profile, done);
+};
+
+export const postGithubLogin = (req, res) => {
+  res.redirect(routes.home);
+};
+
 // log out
 export const logout = (req, res) => {
   req.logout();
   res.redirect(routes.home);
 };
-// need to do : process log out
 
 export const editProfile = (req, res) =>
   res.render("editProfile", { pageTitle: "Edit Profile" });

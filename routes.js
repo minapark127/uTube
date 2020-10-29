@@ -11,6 +11,10 @@ const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PW = "/change-pw";
 const USER_DETAIL = "/:id";
 
+// Github Login
+const GH = "/auth/github";
+const GH_CALLBACK = "/auth/github/callback";
+
 // videos routes
 const VIDEOS = "/videos";
 const UPLOAD = "/upload";
@@ -33,6 +37,8 @@ const routes = {
     }
     return USER_DETAIL;
   },
+  github: GH,
+  githubCallback: GH_CALLBACK,
   videos: VIDEOS,
   upload: UPLOAD,
   videoDetail: (id) => {

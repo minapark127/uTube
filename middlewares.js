@@ -7,7 +7,7 @@ export const localsMiddleware = (req, res, next) => {
   res.locals.siteName = "uTube";
   res.locals.routes = routes;
   res.locals.env = process.env;
-  res.locals.user = req.user || null;
+  res.locals.loggedInUser = req.user || null;
   next();
 };
 

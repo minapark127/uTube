@@ -11,7 +11,7 @@ header.header
         .header__column
             nav
                 ul
-                    if !user
+                    if !loggedInUser
                         a(href=routes.join)
                             li Join
                         a(href=routes.login)
@@ -19,7 +19,7 @@ header.header
                     else
                         a(href=`/videos${routes.upload}`)
                             li Upload
-                        a(href=routes.userDetail(user.id))
+                        a(href=routes.userDetail(loggedInUser.id))
                             li Profile
                         a(href=routes.logout)
                             li Log Out
