@@ -4,6 +4,7 @@ import {
   facebookLogin,
   getJoin,
   getLogin,
+  getMe,
   githubLogin,
   logout,
   postFacebookLogin,
@@ -40,6 +41,8 @@ globalRouter.get(
 );
 
 globalRouter.get(routes.logout, onlyPrivate, logout);
+
+globalRouter.get(routes.me, getMe);
 
 globalRouter.get(routes.search, search);
 

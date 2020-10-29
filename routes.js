@@ -10,6 +10,7 @@ const USER = "/user";
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PW = "/change-pw";
 const USER_DETAIL = "/:id";
+const ME = "/me";
 
 // Github Login
 const GH = "/auth/github";
@@ -41,6 +42,7 @@ const routes = {
     }
     return USER_DETAIL;
   },
+  me: ME,
   github: GH,
   githubCallback: GH_CALLBACK,
   facebook: FB,
