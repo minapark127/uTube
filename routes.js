@@ -15,6 +15,10 @@ const USER_DETAIL = "/:id";
 const GH = "/auth/github";
 const GH_CALLBACK = "/auth/github/callback";
 
+// Facebook Login
+const FB = "/auth/facebook";
+const FB_CALLBACK = "/auth/facebook/callback";
+
 // videos routes
 const VIDEOS = "/videos";
 const UPLOAD = "/upload";
@@ -39,6 +43,8 @@ const routes = {
   },
   github: GH,
   githubCallback: GH_CALLBACK,
+  facebook: FB,
+  facebookCallback: FB_CALLBACK,
   videos: VIDEOS,
   upload: UPLOAD,
   videoDetail: (id) => {
