@@ -9,9 +9,16 @@
     &:not(:last-child) {
       margin-bottom: 15px;
     }
-    span {
-      i {
-        margin-right: 10px;
+    a {
+      display: block;
+      width: 100%;
+      span {
+        i {
+          margin-right: 10px;
+        }
+      }
+      &:visited {
+        color: inherit;
       }
     }
   }
