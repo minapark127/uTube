@@ -72,7 +72,6 @@ export const postGithubLogin = (req, res) => {
 };
 
 // Facebook log in
-
 export const facebookLogin = passport.authenticate("facebook");
 
 export const facebookLoginCallback = async (
@@ -158,5 +157,25 @@ export const postEditProfile = async (req, res) => {
   }
 };
 
-export const changePw = (req, res) =>
+// change password
+export const getChangePw = (req, res) =>
   res.render("changePw", { pageTitle: "Change Password" });
+
+export const postChangePw = async (req, res) => {
+  const {
+    body: { oldPasswod, newPassword, newPassword1 },
+  } = req;
+  try {
+    if (newPassword !== newPassword1) {
+      res.status(400);
+      res.redirect(`/user/${routes.changePw}`);
+    } else {
+      await req.user.changePassword(oldPasswod, newPassword1);
+      res.redirect(routes.me);
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+    res.redirect(`/user/${routes.changePw}`);
+  }
+};

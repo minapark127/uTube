@@ -1,7 +1,8 @@
 import express from "express";
 import {
-  changePw,
+  getChangePw,
   getEditProfile,
+  postChangePw,
   postEditProfile,
   userDetail,
 } from "../controllers/userController";
@@ -13,7 +14,9 @@ const userRouter = express.Router();
 userRouter.get(routes.editProfile, onlyPrivate, getEditProfile);
 userRouter.post(routes.editProfile, onlyPrivate, uploadAvatar, postEditProfile);
 
-userRouter.get(routes.changePw, onlyPrivate, changePw);
+userRouter.get(routes.changePw, onlyPrivate, getChangePw);
+userRouter.post(routes.changePw, onlyPrivate, postChangePw);
+
 userRouter.get(routes.userDetail(), userDetail);
 
 export default userRouter;
