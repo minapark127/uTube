@@ -69,10 +69,10 @@
     width: 90%;
     margin-top: 30px;
     &-delete {
-      @include buttonInForm($darkRed);
+      @include whiteButton($darkRed);
     }
     &-changePw {
-      @include buttonInForm($darkBlue);
+      @include whiteButton($darkBlue);
     }
   }
 }

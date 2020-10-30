@@ -1,8 +1,20 @@
 extends layouts/main
 
 block content
-    p user detail
     .user-profile
-    .user-profile__header
-        img.avatar(src=user.avatarUrl)
-        h4.profile__username=user.name 
+        h2.user-profile__heading
+            i.far.fa-address-card
+            span User Profile
+        .user-profile__user
+            img.user-avatar(src=user.avatarUrl)
+            h3=user.name
+        if user.id === loggedInUser.id
+            .user-profile__buttons
+                a(href=`/user${routes.editProfile}`)
+                    button
+                        i.far.fa-edit
+                        span Edit Profile
+                a(href=`/user${routes.changePw}`)
+                    button
+                        i.fas.fa-unlock
+                        span Change Password 
