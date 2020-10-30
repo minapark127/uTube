@@ -1,3 +1,14 @@
 @mixin buttonDarker($color) {
   background-color: darken($color: $color, $amount: 10);
 }
+
+@mixin buttonInForm($color) {
+  border: 1px solid $color;
+  color: $color;
+  background-color: $white;
+  transition: background-color 0.2s linear, color 0.2s linear;
+  &:hover {
+    background-color: lighten($color: $color, $amount: 10);
+    color: $white;
+  }
+}

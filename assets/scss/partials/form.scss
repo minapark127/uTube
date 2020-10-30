@@ -43,6 +43,8 @@
     }
   }
   &__fileUpload {
+    display: flex;
+    flex-direction: column;
     label {
       font-weight: 300;
       font-size: 16px;
@@ -65,15 +67,12 @@
   }
   &__link {
     width: 90%;
-    .delete {
-      border: 1px solid $red;
-      color: $red;
-      background-color: $white;
-      transition: background-color 0.2s linear, color 0.2s linear;
-      &:hover {
-        background-color: lighten($color: $red, $amount: 30);
-        color: $white;
-      }
+    margin-top: 30px;
+    &-delete {
+      @include buttonInForm($darkRed);
+    }
+    &-changePw {
+      @include buttonInForm($darkBlue);
     }
   }
 }
