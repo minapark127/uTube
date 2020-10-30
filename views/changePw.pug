@@ -1,4 +1,12 @@
 extends layouts/main
 
 block content
-    p change password
+    .form__container
+        form(action=`/users${routes.changePw}`, method="post")
+            h2.form__container__heading 
+                i.fas.fa-unlock
+                span Change Password
+            input(type="password", name="oldPasswod", placeholder="Current Password")
+            input(type="password", name="newPassword", placeholder="New Password")
+            input(type="password", name="newPassword1", placeholder="Verify New Password")
+            input(type="submit", value="Change Password")
