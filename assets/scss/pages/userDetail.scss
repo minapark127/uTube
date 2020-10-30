@@ -34,7 +34,7 @@
     a {
       width: 48%;
       button {
-        @include coloredButton($darkBlue);
+        @include coloredButton($darkRed);
         i {
           margin-right: 10px;
         }

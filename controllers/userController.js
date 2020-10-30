@@ -133,7 +133,30 @@ export const userDetail = async (req, res) => {
   }
 };
 
-export const editProfile = (req, res) =>
+// edit profile
+export const getEditProfile = (req, res) =>
   res.render("editProfile", { pageTitle: "Edit Profile" });
+
+export const postEditProfile = async (req, res) => {
+  const {
+    user: { _id: id },
+    body: { name, email },
+    file,
+  } = req;
+
+  console.log(id);
+  try {
+    await User.findByIdAndUpdate(id, {
+      name,
+      email,
+      avatarUrl: file ? file.path : req.user.avatarUrl,
+    });
+    res.redirect(routes.me);
+  } catch (error) {
+    console.log(error);
+    res.render("editProfile", { pageTitle: "Edit Profile" });
+  }
+};
+
 export const changePw = (req, res) =>
   res.render("changePw", { pageTitle: "Change Password" });

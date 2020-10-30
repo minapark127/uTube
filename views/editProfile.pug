@@ -2,15 +2,15 @@ extends layouts/main
 
 block content
     .form__container
-        form(action=`/user${routes.editProfile}`, method="post")
+        form(action=`/user${routes.editProfile}`, method="post", enctype="multipart/form-data")
             h2.form__container__heading 
                 i.far.fa-edit
                 span Edit Profile
             .form__container__fileUpload
                 label(for="avatar") Avatar
-                input(type="file", id="avatar", name="avatar")
-            input(type="text", placeholder="Name", name="name")
-            input(type="email", placeholder="Email", name="email")
+                input(type="file", id="avatar", name="avatarFile", accept="image/*")
+            input(type="text", placeholder="Name", name="name" value=loggedInUser.name)
+            input(type="email", placeholder="Email", name="email" value=loggedInUser.email)
             input(type="submit", value="Update Profile")
             a.form__container__link(href=`/user${routes.changePw}`)
                 button.form__container__link-changePw Change Password 
