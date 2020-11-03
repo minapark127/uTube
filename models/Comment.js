@@ -5,6 +5,10 @@ const CommentSchema = new mongoose.Schema({
     type: String,
     required: "comment is required",
   },
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
   createdAt: {
     type: Date,
     default: Date.now,
