@@ -5,11 +5,17 @@ block content
         .videoDetail__player
             video(src=`/${video.fileUrl}`)
         .videoDetail__info
-            a(href=routes.editVideo(video.id)).videoDetail__info-edit 
-                i.far.fa-edit
-                span Edit Video
+            if loggedInUser
+                if loggedInUser.id === video.creator.id
+                    a(href=routes.editVideo(video.id)).videoDetail__info-edit 
+                        i.far.fa-edit
+                        span Edit Video
             h1.videoDetail__info-title=video.title
             span.videoDetail__info-views #{video.views} views
+            section.videoDetail__info-creator
+                a(href=routes.userDetail(video.creator.id))
+                    img(src=`/${video.creator.avatarUrl}`)
+                a(href=routes.userDetail(video.creator.id) title=`created by ${video.creator.name}`)=video.creator.name
             h2.videoDetail__info-description=video.description
             if video.comments.length === 1
                 span.videoDetail__info-comments 1 comment
