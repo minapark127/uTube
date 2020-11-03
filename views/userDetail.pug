@@ -18,4 +18,21 @@ block content
                     a(href=`/user${routes.changePw}`)
                         button
                             i.fas.fa-unlock
-                            span Change Password 
+                            span Change Password
+    .uploadedVideos
+        h2
+            i.fas.fa-cloud-upload-alt
+            span Uploaded Videos
+        if user.videos.length > 0
+            .uploadedVideos__videos
+                each video in user.videos
+                    .uploadedVideo
+                        video.uploadedVideo__thumbnail(src=`/${video.fileUrl}`, controls=false)
+                        h3.uploadedVideo__title
+                            a(href=routes.videoDetail(video.id))=video.title
+                        if video.views.length === 1
+                            p.uploadedVideo__views 1 view
+                        else
+                            p.uploadedVideo__views #{video.views} views
+        else
+            p.uploadedVideos__noVideos no videos uploaded
