@@ -1,11 +1,11 @@
 mixin videoPlayer(video = {})
     .videoPlayer#js-videoPlayer&attributes(attributes)
-        video(src=`/${video.src}`)
+        video(src=`/${video.src}`)#js-video
         .videoPlayer__controls
             .videoPlayer__controls-column
                 span#js-playBtn
                     i.fas.fa-play
-                span
+                span#js-volumeBtn
                     i.fas.fa-volume-up
                 span 00:00 / 00:00
             .videoPlayer__controls-column
