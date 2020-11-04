@@ -5,11 +5,10 @@ block content
         .videoDetail__player
             video(src=`/${video.fileUrl}`)
         .videoDetail__info
-            if loggedInUser
-                if loggedInUser.id === video.creator.id
-                    a(href=routes.editVideo(video.id)).videoDetail__info-edit 
-                        i.far.fa-edit
-                        span Edit Video
+            if loggedInUser && loggedInUser.id === video.creator.id
+                a(href=routes.editVideo(video.id)).videoDetail__info-edit 
+                    i.far.fa-edit
+                    span Edit Video
             h1.videoDetail__info-title=video.title
             span.videoDetail__info-views #{video.views} views
             section.videoDetail__info-creator

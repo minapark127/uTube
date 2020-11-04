@@ -8,17 +8,16 @@ block content
         .user-profile__user
             img.user-avatar(src=`/${user.avatarUrl}`)
             h3=user.name
-        if loggedInUser
-            if user.id === loggedInUser.id
-                .user-profile__buttons
-                    a(href=`/user${routes.editProfile}`)
-                        button
-                            i.far.fa-edit
-                            span Edit Profile
-                    a(href=`/user${routes.changePw}`)
-                        button
-                            i.fas.fa-unlock
-                            span Change Password
+        if loggedInUser && user.id === loggedInUser.id
+            .user-profile__buttons
+                a(href=`/user${routes.editProfile}`)
+                    button
+                        i.far.fa-edit
+                        span Edit Profile
+                a(href=`/user${routes.changePw}`)
+                    button
+                        i.fas.fa-unlock
+                        span Change Password
     .uploadedVideos
         h2
             i.fas.fa-cloud-upload-alt
