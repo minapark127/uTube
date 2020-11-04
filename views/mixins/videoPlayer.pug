@@ -1,0 +1,14 @@
+mixin videoPlayer(video = {})
+    .videoPlayer&attributes(attributes)
+        video(src=`/${video.src}`)
+        .videoPlayer__controls
+            .videoPlayer__controls-column
+                span
+                    i.fas.fa-play
+                span
+                    i.fas.fa-volume-up
+                span 00:00 / 00:00
+            .videoPlayer__controls-column
+                span
+                    i.fas.fa-expand
+            
