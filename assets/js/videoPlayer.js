@@ -1,4 +1,5 @@
 const videoPlayer = document.querySelector("#js-videoPlayer");
+const controls = document.querySelector("#js-videoPlayerControls");
 const video = document.querySelector("#js-videoPlayer video");
 const playBtn = document.querySelector("#js-playBtn");
 const volumeBtn = document.querySelector("#js-volumeBtn");
@@ -27,6 +28,16 @@ const volumeClickHandler = () => {
     volumeBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
     volumeBar.value = 0;
   }
+};
+
+const showVolumeBar = () => {
+  volumeBar.classList.add("volumeBarShow");
+  volumeBar.classList.remove("volumeBarHidden");
+};
+
+const hideVolumeBar = () => {
+  volumeBar.classList.remove("volumeBarShow");
+  volumeBar.classList.add("volumeBarHidden");
 };
 
 const VolumeBarChangeHandler = (event) => {
@@ -97,6 +108,8 @@ const init = () => {
   video.addEventListener("timeupdate", setCurrentTime);
   video.addEventListener("ended", handleVideoEnded);
   volumeBar.addEventListener("input", VolumeBarChangeHandler);
+  volumeBtn.addEventListener("mouseenter", showVolumeBar);
+  controls.addEventListener("mouseleave", hideVolumeBar);
 };
 
 if (videoPlayer) {

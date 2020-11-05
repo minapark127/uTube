@@ -1,19 +1,19 @@
 mixin videoPlayer(video = {})
     .videoPlayer#js-videoPlayer&attributes(attributes)
         video(src=`/${video.src}`)
-        .videoPlayer__controls
-            .videoPlayer__controls-column
-                span#js-playBtn
+        .videoPlayer__controls#js-videoPlayerControls
+            .videoPlayer__controls__column
+                .videoControl-Btn#js-playBtn
                     i.fas.fa-play
-                div
-                    span#js-volumeBtn
+                div.videoPlayer__controls__column__volume
+                    .videoControl-Btn#js-volumeBtn
                         i.fas.fa-volume-up
-                    input(type="range" id="js-volumeBar" name="volumeBar" min="0" max="1" step="0.05" value="1")
-                span
+                    input(type="range" id="js-volumeBar" name="volumeBar" min="0" max="1" step="0.05" value="1").volumeBarHidden
+                span.videoPlayer__controls__column__time
                     span#js-timeBar-current 00:00
                     span  / 
                     span#js-timeBar-total 00:00
-            .videoPlayer__controls-column
-                span#js-fullScreenBtn
+            .videoPlayer__controls__column
+                .videoControl-Btn#js-fullScreenBtn
                     i.fas.fa-expand
             

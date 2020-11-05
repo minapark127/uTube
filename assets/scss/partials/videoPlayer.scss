@@ -1,5 +1,6 @@
 .videoPlayer {
   position: relative;
+  display: flex;
   video {
     width: 100%;
   }
@@ -7,28 +8,59 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    justify-content: space-between;
     padding: 20px 25px;
     color: rgba($color: $white, $alpha: 0.9);
-    i {
-      font-size: 25px;
-      &:hover {
-        color: rgba($color: $white, $alpha: 0.7);
-        cursor: pointer;
+    &__column {
+      .videoControl-Btn {
+        width: 35px;
+        i {
+          font-size: 20px;
+          &:hover {
+            color: rgba($color: $white, $alpha: 0.7);
+            cursor: pointer;
+          }
+        }
       }
-    }
-    &-column {
+      &__volume {
+        display: flex;
+        input[type="range"] {
+          cursor: pointer;
+        }
+        .volumeBarHidden {
+          display: none;
+        }
+        .volumeBarShow {
+          display: inline-block;
+        }
+      }
+      &__time {
+        display: flex;
+        span:first-child {
+          text-align: right;
+        }
+        span:nth-child(2) {
+          margin: 0 7px;
+          text-align: center;
+        }
+        span:last-child {
+          text-align: left;
+        }
+        span:not(:nth-child(2)) {
+          min-width: 68px;
+        }
+      }
       &:first-child {
         display: flex;
         align-items: center;
-        & :not(:last-child) > * {
-          margin-right: 20px;
-        }
       }
       &:last-child {
-        justify-self: end;
+        text-align: right;
       }
+    }
+    &:hover {
+      background-color: rgba($color: $black, $alpha: 0.5);
     }
   }
 }
