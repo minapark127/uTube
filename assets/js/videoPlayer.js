@@ -3,7 +3,6 @@ const video = document.querySelector("#js-videoPlayer video");
 const playBtn = document.querySelector("#js-playBtn");
 const volumeBtn = document.querySelector("#js-volumeBtn");
 const fullScreenBtn = document.querySelector("#js-fullScreenBtn");
-const timebar = document.querySelector("#js-timeBar");
 const currentTimebar = document.querySelector("#js-timeBar-current");
 const totalTimebar = document.querySelector("#js-timeBar-total");
 
@@ -63,12 +62,20 @@ const setCurrentTime = () => {
   currentTimebar.innerHTML = formatTime(video.currentTime);
 };
 
+const handleVideoEnded = () => {
+  playBtn.innerHTML = '<i class="fas fa-play"></i>';
+  window.setTimeout(() => {
+    video.currentTime = 0;
+  }, 1000);
+};
+
 const init = () => {
   playBtn.addEventListener("click", playClickHandler);
   volumeBtn.addEventListener("click", volumeClickHandler);
   fullScreenBtn.addEventListener("click", fullScreenClickHandler);
   video.addEventListener("loadedmetadata", setVideoTime);
   video.addEventListener("timeupdate", setCurrentTime);
+  video.addEventListener("ended", handleVideoEnded);
 };
 
 if (videoPlayer) {
