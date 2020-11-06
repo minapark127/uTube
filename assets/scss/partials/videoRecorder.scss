@@ -19,9 +19,13 @@
   }
   &__startBtn {
     @include whiteButton($green);
+    display: none;
   }
   &__stopBtn {
     @include whiteButton($red);
     display: none;
+  }
+  .recordBtn-showing {
+    display: block;
   }
 }
