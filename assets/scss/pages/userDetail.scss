@@ -63,6 +63,14 @@
       }
       &__thumbnail {
         width: 100%;
+        max-height: 153px;
+        background-color: black;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        video {
+          width: 100%;
+        }
       }
       &__title {
         font-size: 18px;

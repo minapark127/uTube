@@ -26,7 +26,9 @@ block content
             .uploadedVideos__videos
                 each video in user.videos
                     .uploadedVideo
-                        video.uploadedVideo__thumbnail(src=`/${video.fileUrl}`, controls=false)
+                        //- video.uploadedVideo__thumbnail(src=`/${video.fileUrl}`, controls=false)
+                        .uploadedVideo__thumbnail
+                            video(src=`/${video.fileUrl}`, controls=false)
                         h3.uploadedVideo__title
                             a(href=routes.videoDetail(video.id))=video.title
                         if video.views.length === 1

@@ -3,6 +3,16 @@
   &__thumbnail {
     margin-bottom: 10px;
     width: 100%;
+    background-color: black;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    video {
+      width: 100%;
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
   &__title {
     font-size: 18px;

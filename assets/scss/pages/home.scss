@@ -5,10 +5,16 @@
   .videoBlock:first-child,
   .videoBlock:nth-child(2) {
     grid-column: span 3;
+    video {
+      max-height: 362px;
+    }
   }
   .videoBlock:nth-child(3),
   .videoBlock:nth-child(4),
   .videoBlock:nth-child(5) {
     grid-column: span 2;
+    video {
+      max-height: 210px;
+    }
   }
 }
