@@ -1,0 +1,27 @@
+.recording__container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  video {
+    width: 100%;
+    background-color: $black;
+    margin-bottom: 50px;
+    box-shadow: 0 1px 33px 3px rgba(0, 0, 0, 0.32),
+      0 1px 17px -1px rgba(0, 0, 0, 0.8);
+  }
+  button {
+    width: 55%;
+    border-radius: 30px;
+  }
+  &__startBtn {
+    @include whiteButton($green);
+  }
+  &__stopBtn {
+    @include whiteButton($red);
+    display: none;
+  }
+}
