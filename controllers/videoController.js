@@ -1,5 +1,6 @@
 import Video from "../models/Video";
 import Comment from "../models/Comment";
+import AnonymousUser from "../models/AnonymousUser";
 import routes from "../routes";
 
 // home
@@ -64,8 +65,18 @@ export const videoDetail = async (req, res) => {
   try {
     const video = await Video.findById(id)
       .populate("creator")
-      .populate("comments");
+      .populate({
+        path: "comments",
+        populate: [
+          {
+            path: "creator",
+            model: "User",
+          },
+          { path: "anonymousCreator", model: "AnonymousUser" },
+        ],
+      });
     res.render("videoDetail", { pageTitle: "Video Detail", video });
+    console.log(video.comments);
   } catch (error) {
     console.log(error);
     res.redirect(routes.home);
@@ -149,16 +160,32 @@ export const postAddComment = async (req, res) => {
   } = req;
   try {
     const video = await Video.findById(id);
-    const newComment = await Comment.create({
-      text: comment,
-      creator: user,
-      video: video.id,
-    });
-    video.comments.push(newComment);
-    video.save();
+    if (user == null) {
+      const newAnonymous = await AnonymousUser.create({
+        name: "anonymous",
+        avatarUrl:
+          "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/person_1f9d1.png",
+      });
+      const newComment = await Comment.create({
+        text: comment,
+        video: video.id,
+        anonymousCreator: newAnonymous,
+      });
+      video.comments.push(newComment);
+      video.save();
+    } else {
+      const newComment = await Comment.create({
+        text: comment,
+        creator: user,
+        video: video.id,
+      });
+      video.comments.push(newComment);
+      video.save();
+    }
   } catch (error) {
     res.status(400);
   } finally {
     res.end();
+    console.log(user);
   }
 };

@@ -23,7 +23,7 @@ block content
             else
                 span.videoDetail__info-comments #{video.comments.length} comments
         .videoDetail__comments
-            form.videoDetail__comments__form
+            form.videoDetail__comments__form#js-commentForm
                 if loggedInUser && loggedInUser.avatarUrl
                     a(href=routes.userDetail(loggedInUser.id))
                         img(src=`/${loggedInUser.avatarUrl}`)
@@ -33,6 +33,12 @@ block content
             ul.videoDetail__comments__comments
                 each comment in video.comments
                     li
+                        if(comment.creator)
+                            .commentAvatar
+                                img(src=`/${comment.creator.avatarUrl}`)
+                            span=comment.creator.name
+                        else
+                            .commentAvatar
+                                img(src=`${comment.anonymousCreator.avatarUrl}`)
+                            span=comment.anonymousCreator.name
                         span=comment.text
-                        span=comment.creator
-                        span=comment.createdAt
