@@ -185,3 +185,23 @@ export const postAddComment = async (req, res) => {
     res.end();
   }
 };
+
+// delete Comment
+export const deleteComment = async (req, res) => {
+  const {
+    params: { commentId, videoId },
+  } = req;
+  try {
+    const comment = await Comment.findById(commentId);
+    if (`${comment.creator}` !== req.user.id) {
+      throw Error();
+    } else {
+      await Comment.findOneAndRemove({ _id: commentId });
+    }
+  } catch (error) {
+    console.log(error);
+    res.redirect(routes.videoDetail(videoId));
+  } finally {
+    res.end();
+  }
+};

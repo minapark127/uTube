@@ -130,8 +130,7 @@
           position: absolute;
           right: 10px;
           top: 21px;
-
-          a {
+          button {
             width: 30px;
             height: 30px;
             display: flex;
@@ -139,7 +138,9 @@
             justify-content: center;
             border: none;
             background-color: inherit;
-            color: $red;
+            &:hover {
+              color: $red;
+            }
             i {
               font-size: 18px;
             }
