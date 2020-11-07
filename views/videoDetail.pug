@@ -21,4 +21,18 @@ block content
             if video.comments.length === 1
                 span.videoDetail__info-comments 1 comment
             else
-                span.videoDetail__info-comments #{video.comments.length} comments 
+                span.videoDetail__info-comments #{video.comments.length} comments
+        .videoDetail__comments
+            form.videoDetail__comments__form
+                if loggedInUser && loggedInUser.avatarUrl
+                    a(href=routes.userDetail(loggedInUser.id))
+                        img(src=`/${loggedInUser.avatarUrl}`)
+                else
+                    img(src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/person_1f9d1.png")
+                input(type="text", placeholder="Add a comment")
+            ul.videoDetail__comments__comments
+                each comment in video.comments
+                    li
+                        span=comment.text
+                        span=comment.creator
+                        span=comment.createdAt
