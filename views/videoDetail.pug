@@ -31,14 +31,23 @@ block content
                     img(src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/person_1f9d1.png")
                 input(type="text", placeholder="Add a comment")
             ul.videoDetail__comments__comments
-                each comment in video.comments
+                each comment in video.comments.reverse()
                     li
-                        if(comment.creator)
-                            .commentAvatar
+                        if comment.creator
+                            .comment__avatar
                                 img(src=`/${comment.creator.avatarUrl}`)
-                            span=comment.creator.name
+                            .comment__info
+                                span.comment__info__name=comment.creator.name
+                                span.comment__info__createdAt #{comment.createdAt.toDateString()}
+                                p=comment.text
+                            if loggedInUser && loggedInUser.id === comment.creator.id
+                                .comment__btn
+                                    button(type="button")
+                                        i.far.fa-trash-alt
                         else
-                            .commentAvatar
+                            .comment__avatar
                                 img(src=`${comment.anonymousCreator.avatarUrl}`)
-                            span=comment.anonymousCreator.name
-                        span=comment.text
+                            .comment__info
+                                span.comment__info__name=comment.anonymousCreator.name
+                                span.comment__info__createdAt #{comment.createdAt.toDateString()}
+                                p=comment.text

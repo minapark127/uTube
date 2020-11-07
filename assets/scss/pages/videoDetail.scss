@@ -70,7 +70,7 @@
       border-bottom: 0.5px solid lighten($color: $borderGrey, $amount: 10);
     }
     &-comments {
-      padding: 20px 0;
+      padding: 40px 0;
       font-size: 20px;
     }
   }
@@ -78,6 +78,7 @@
     &__form {
       display: flex;
       align-items: center;
+      margin-bottom: 30px;
       img {
         width: 50px;
         height: 50px;
@@ -90,6 +91,56 @@
         font-size: 18px;
         background-color: inherit;
         border-bottom: 1px solid $borderGrey;
+      }
+    }
+    &__comments {
+      li {
+        display: flex;
+        position: relative;
+        padding: 23px 10px;
+        &:not(:last-child) {
+          border-bottom: 0.5px solid lighten($color: $borderGrey, $amount: 10);
+        }
+        .comment__avatar {
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+          }
+        }
+        .comment__info {
+          font-size: 16px;
+          span {
+            display: inline-block;
+          }
+          &__name {
+            padding-bottom: 15px;
+            font-weight: 600;
+            margin-right: 9px;
+          }
+          &__createdAt {
+            font-size: 13px;
+            margin-bottom: 10px;
+            color: lighten($color: $black, $amount: 20);
+          }
+        }
+        .comment__btn {
+          width: 20px;
+          position: absolute;
+          right: 10px;
+          top: 21px;
+          button {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            background-color: inherit;
+            color: $red;
+          }
+        }
       }
     }
   }

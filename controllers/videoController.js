@@ -37,7 +37,6 @@ export const search = async (req, res) => {
 // upload
 export const getUpload = (req, res) => {
   res.render("upload", { pageTitle: "Upload" });
-  console.log(req.user);
 };
 
 export const postUpload = async (req, res) => {
@@ -76,7 +75,6 @@ export const videoDetail = async (req, res) => {
         ],
       });
     res.render("videoDetail", { pageTitle: "Video Detail", video });
-    console.log(video.comments);
   } catch (error) {
     console.log(error);
     res.redirect(routes.home);
@@ -138,7 +136,6 @@ export const postAddViewCount = async (req, res) => {
   const {
     params: { id },
   } = req;
-  console.log(id);
   try {
     const video = await Video.findById(id);
     video.views += 1;
@@ -186,6 +183,5 @@ export const postAddComment = async (req, res) => {
     res.status(400);
   } finally {
     res.end();
-    console.log(user);
   }
 };
