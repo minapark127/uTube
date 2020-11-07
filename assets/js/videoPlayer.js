@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const videoPlayer = document.querySelector("#js-videoPlayer");
 const controls = document.querySelector("#js-videoPlayerControls");
 const video = document.querySelector("#js-videoPlayer video");
@@ -92,11 +94,20 @@ const setCurrentTime = () => {
   currentTimebar.innerHTML = formatTime(video.currentTime);
 };
 
+const addViewCount = () => {
+  const videoId = window.location.href.split("/videos/")[1];
+  axios({
+    method: "POST",
+    url: `/api/${videoId}/view-count`,
+  });
+};
+
 const handleVideoEnded = () => {
   playBtn.innerHTML = '<i class="fas fa-play"></i>';
   window.setTimeout(() => {
     video.currentTime = 0;
   }, 1000);
+  addViewCount();
 };
 
 const init = () => {

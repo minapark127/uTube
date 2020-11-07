@@ -27,6 +27,10 @@ const VIDEO_DETAIL = "/:id";
 const EDIT_VIDEO = "/:id/edit";
 const DELETE_VIDEO = "/:id/delete";
 
+// API routes
+const API = "/api";
+const ADD_VIEW_COUNT = "/:id/view-count";
+
 const routes = {
   home: HOME,
   join: JOIN,
@@ -67,6 +71,8 @@ const routes = {
     }
     return DELETE_VIDEO;
   },
+  api: API,
+  addViewCount: ADD_VIEW_COUNT,
 };
 
 export default routes;
