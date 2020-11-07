@@ -1,6 +1,24 @@
 import axios from "axios";
 
 const commentForm = document.querySelector("#js-commentForm");
+const commentDelBtns = document.querySelectorAll("#js-commentBtn");
+
+const showDeletedMessage = (event) => {
+  const {
+    target,
+    target: { localName },
+  } = event;
+  if (localName === "i") {
+    const btn = target.parentElement;
+    const div = btn.parentElement;
+    const li = div.parentElement;
+    li.innerHTML = "comment deleted";
+  } else if (localName === "a") {
+    const div = target.parentElement;
+    const li = div.parentElement;
+    li.innerHTML = "comment deleted";
+  }
+};
 
 const sendComment = async (comment) => {
   const videoId = window.location.href.split("/videos/")[1];
@@ -9,7 +27,6 @@ const sendComment = async (comment) => {
     method: "POST",
     data: { comment },
   });
-  console.log(response);
 };
 
 const handleSubmit = (event) => {
@@ -22,6 +39,9 @@ const handleSubmit = (event) => {
 
 const init = () => {
   commentForm.addEventListener("submit", handleSubmit);
+  commentDelBtns.forEach((btn) => {
+    btn.addEventListener("click", showDeletedMessage);
+  });
 };
 
 if (commentForm) {

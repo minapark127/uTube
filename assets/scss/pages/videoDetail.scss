@@ -130,7 +130,8 @@
           position: absolute;
           right: 10px;
           top: 21px;
-          button {
+
+          a {
             width: 30px;
             height: 30px;
             display: flex;
@@ -139,6 +140,9 @@
             border: none;
             background-color: inherit;
             color: $red;
+            i {
+              font-size: 18px;
+            }
           }
         }
       }

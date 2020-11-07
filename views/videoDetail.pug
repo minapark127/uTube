@@ -42,7 +42,7 @@ block content
                                 p=comment.text
                             if loggedInUser && loggedInUser.id === comment.creator.id
                                 .comment__btn
-                                    button(type="button")
+                                    a#js-commentBtn 
                                         i.far.fa-trash-alt
                         else
                             .comment__avatar
