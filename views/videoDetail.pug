@@ -4,7 +4,8 @@ include mixins/videoPlayer
 block content
     .videoDetail
         +videoPlayer({
-            src:video.fileUrl
+            src:video.fileUrl,
+            duration: videoDuration
         })(class="videoDetail__player")
         .videoDetail__info
             if loggedInUser && loggedInUser.id === video.creator.id

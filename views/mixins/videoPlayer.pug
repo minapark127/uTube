@@ -12,7 +12,7 @@ mixin videoPlayer(video = {})
                 span.videoPlayer__controls__column__time
                     span#js-timeBar-current 00:00
                     span  / 
-                    span#js-timeBar-total 00:00
+                    span#js-timeBar-total #{video.duration}
             .videoPlayer__controls__column
                 .videoControl-Btn#js-fullScreenBtn
                     i.fas.fa-expand

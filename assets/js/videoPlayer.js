@@ -87,7 +87,8 @@ const formatTime = (seconds) => {
 };
 
 const setVideoTime = () => {
-  totalTimebar.innerHTML = formatTime(video.duration);
+  const videoDuration = totalTimebar.innerHTML;
+  totalTimebar.innerHTML = formatTime(videoDuration);
 };
 
 const setCurrentTime = () => {
@@ -115,7 +116,7 @@ const init = () => {
   playBtn.addEventListener("click", playClickHandler);
   volumeBtn.addEventListener("click", volumeClickHandler);
   fullScreenBtn.addEventListener("click", fullScreenClickHandler);
-  video.addEventListener("loadedmetadata", setVideoTime);
+  window.addEventListener("load", setVideoTime);
   video.addEventListener("timeupdate", setCurrentTime);
   video.addEventListener("ended", handleVideoEnded);
   volumeBar.addEventListener("input", VolumeBarChangeHandler);
