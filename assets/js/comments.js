@@ -7,7 +7,23 @@ const formImg = document.querySelector(".js-formAvatar");
 const commentNumber = document.querySelector("#js-commentNumber");
 
 const addNumber = () => {
-  commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) + 1;
+  const addedNumber = parseInt(commentNumber.innerHTML, 10) + 1;
+  const currentText = commentNumber.parentElement.innerText;
+  if (currentText.split(" ")[0] === "0") {
+    commentNumber.parentElement.innerText = "1 comment";
+  } else {
+    commentNumber.parentElement.innerText = `${addedNumber} comments`;
+  }
+};
+
+const reduceNumber = () => {
+  const reducedNumber = parseInt(commentNumber.innerHTML, 10) - 1;
+  const currentText = commentNumber.parentElement.innerText;
+  if (currentText.split(" ")[0] === "1") {
+    commentNumber.parentElement.innerText = `${reducedNumber} comments`;
+  } else {
+    commentNumber.parentElement.innerText = `${reducedNumber} comment`;
+  }
 };
 
 const addComment = (comment) => {
@@ -44,10 +60,13 @@ const addComment = (comment) => {
 };
 
 const deleteComment = async (videoId, commentId) => {
-  await axios({
+  const response = await axios({
     url: `/api/${videoId}/delete-comment/${commentId}`,
     method: "POST",
   });
+  if (response.status === 200) {
+    reduceNumber();
+  }
 };
 
 const showDeletedMessage = (event) => {
@@ -82,7 +101,10 @@ const sendComment = async (comment) => {
     method: "POST",
     data: { comment },
   });
-  console.log(response);
+  if (response.status === 200) {
+    addComment(comment);
+    addNumber();
+  }
 };
 
 const handleSubmit = (event) => {
@@ -90,8 +112,6 @@ const handleSubmit = (event) => {
   const commentInput = commentForm.querySelector("input");
   const comment = commentInput.value;
   sendComment(comment);
-  addComment(comment);
-  addNumber();
   commentInput.value = "";
 };
 
