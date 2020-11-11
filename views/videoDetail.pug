@@ -20,18 +20,22 @@ block content
                 a(href=routes.userDetail(video.creator.id) title=`created by ${video.creator.name}`)=video.creator.name
             h2.videoDetail__info-description=video.description
             if video.comments.length === 1
-                span.videoDetail__info-comments 1 comment
+                span.videoDetail__info-comments
+                    span#js-commentNumber 1
+                    | &nbsp;comment
             else
-                span.videoDetail__info-comments #{video.comments.length} comments
+                span.videoDetail__info-comments
+                    span#js-commentNumber #{video.comments.length}
+                    | &nbsp;comments
         .videoDetail__comments
             form.videoDetail__comments__form#js-commentForm
                 if loggedInUser && loggedInUser.avatarUrl
                     a(href=routes.userDetail(loggedInUser.id))
-                        img(src=`/${loggedInUser.avatarUrl}`)
+                        img(src=`/${loggedInUser.avatarUrl}`, alt=`avatar-${loggedInUser.name}`).js-formAvatar
                 else
-                    img(src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/person_1f9d1.png")
+                    img(src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/person_1f9d1.png", alt=`avatar-anonymous`).js-formAvatar
                 input(type="text", placeholder="Add a comment")
-            ul.videoDetail__comments__comments
+            ul.videoDetail__comments__comments#js-commentUl
                 each comment in video.comments.reverse()
                     li
                         if comment.creator
