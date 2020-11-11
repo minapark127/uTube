@@ -29,12 +29,16 @@
           cursor: pointer;
         }
         .volumeBarHidden {
-          display: none;
+          // display: none;
+          opacity: 0;
+          width: 0;
         }
         .volumeBarShow {
-          display: inline-block;
+          // display: inline-block;
+          opacity: 1;
+          width: 100%;
+          transition: width 0.8s linear;
         }
-      }
       &__time {
         display: flex;
         span:first-child {
