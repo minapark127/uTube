@@ -1,4 +1,5 @@
 import axios from "axios";
+import getBlobDuration from "get-blob-duration";
 
 const videoPlayer = document.querySelector("#js-videoPlayer");
 const controls = document.querySelector("#js-videoPlayerControls");
@@ -86,9 +87,15 @@ const formatTime = (seconds) => {
   return `${hours}:${minutes}:${leftSeconds}`;
 };
 
-const setVideoTime = () => {
+const setVideoTime = async () => {
   const videoDuration = totalTimebar.innerHTML;
-  totalTimebar.innerHTML = formatTime(videoDuration);
+  if (isNaN(videoDuration)) {
+    const blobUrl = video.src;
+    const duration = await getBlobDuration(blobUrl);
+    totalTimebar.innerHTML = formatTime(duration);
+  } else {
+    totalTimebar.innerHTML = formatTime(videoDuration);
+  }
 };
 
 const setCurrentTime = () => {

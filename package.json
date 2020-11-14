@@ -20,6 +20,7 @@
     "express-flash": "0.0.2",
     "express-session": "^1.17.1",
     "fluent-ffmpeg": "^2.1.2",
+    "get-blob-duration": "^1.1.2",
     "helmet": "^4.1.1",
     "mongoose": "^5.10.9",
     "morgan": "^1.10.0",
