@@ -54,6 +54,7 @@ export const postUpload = async (req, res) => {
   });
   req.user.videos.push(newVideo.id);
   req.user.save();
+  req.flash("success", "Video uploaded");
   res.redirect(routes.videoDetail(newVideo.id));
 };
 
@@ -118,9 +119,11 @@ export const postEditVideo = async (req, res) => {
   } = req;
   try {
     await Video.findOneAndUpdate({ _id: id }, { title, description });
+    req.flash("success", "Video detail edited");
     res.redirect(routes.videoDetail(id));
   } catch (error) {
     console.log(error);
+    req.flash("error", "Unable to edit video details");
     res.redirect(routes.home);
   }
 };
@@ -136,9 +139,11 @@ export const deleteVideo = async (req, res) => {
       throw Error();
     } else {
       await Video.findOneAndRemove({ _id: id });
+      req.flash("success", "Video deleted");
     }
   } catch (error) {
     console.log(error);
+    req.flash("error", "Unable to delete video");
   } finally {
     res.redirect(routes.home);
   }

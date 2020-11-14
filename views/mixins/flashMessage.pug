@@ -1,0 +1,10 @@
+mixin flashMessage(message = {})
+    .flashMessage
+        .flashMessage__message(class=message.type)
+            if message.type === "error"
+                i.fas.fa-times-circle
+            else if message.type === "success"
+                i.fas.fa-check-circle
+            else if message.type === "info"
+                i.fas.fa-info-circle
+            p=message.text

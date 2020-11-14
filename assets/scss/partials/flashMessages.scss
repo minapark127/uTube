@@ -1,0 +1,52 @@
+@keyframes flashAnimation {
+  0% {
+    transform: translateX(1000px);
+    opacity: 0;
+  }
+  20% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(1000px);
+    opacity: 0;
+  }
+}
+
+.flashMessage {
+  animation: flashAnimation 4s ease-in-out forwards;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  &__message {
+    display: flex;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 15px 35px;
+    width: 40%;
+    align-items: center;
+    i {
+      margin-right: 20px;
+    }
+    &.error {
+      background-color: rgba($color: $red, $alpha: 0.3);
+      border: 1px solid rgba($color: $red, $alpha: 0.5);
+      color: darken($color: $red, $amount: 13);
+    }
+    &.success {
+      background-color: rgba($color: $green, $alpha: 0.6);
+      border: 1px solid rgba($color: $green, $alpha: 0.8);
+      color: darken($color: $green, $amount: 25);
+    }
+    &.info {
+      background-color: rgba($color: $fbBlue, $alpha: 0.6);
+      border: 1px solid rgba($color: $fbBlue, $alpha: 0.8);
+      color: darken($color: $fbBlue, $amount: 20);
+    }
+  }
+}

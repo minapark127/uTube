@@ -1,3 +1,5 @@
+include ../mixins/flashMessage
+
 doctype html
 html
     head
@@ -11,6 +13,21 @@ html
 
     body
         include ../partials/header
+        if messages.error
+            +flashMessage({
+            type:"error",
+            text: messages.error
+        })
+        else if messages.success
+            +flashMessage({
+            type:"success",
+            text: messages.success
+        })
+        else if messages.info
+            +flashMessage({
+            type:"info",
+            text: messages.info
+        })
         main
             block content
 
