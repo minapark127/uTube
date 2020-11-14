@@ -6,7 +6,10 @@ block content
             i.far.fa-address-card
             span User Profile
         .user-profile__user
-            img.user-avatar(src=`/${user.avatarUrl}`)
+            if user.avatarUrl
+                img.user-avatar(src=user.avatarUrl)
+            else
+                img.user-avatar(src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/person_1f9d1.png", alt=`avatar-anonymous`)
             h3=user.name
         if loggedInUser && user.id === loggedInUser.id
             .user-profile__buttons
@@ -27,7 +30,7 @@ block content
                 each video in user.videos
                     .uploadedVideo
                         .uploadedVideo__thumbnail
-                            video(src=`/${video.fileUrl}`, controls=false)
+                            video(src=video.fileUrl, controls=false)
                         h3.uploadedVideo__title
                             a(href=routes.videoDetail(video.id))=video.title
                         if video.views.length === 1
