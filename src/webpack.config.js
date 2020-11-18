@@ -1,5 +1,5 @@
 const path = require("path");
-require("@babel/polyfill");
+// require("@babel/polyfill");
 require("autoprefixer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
