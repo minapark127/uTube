@@ -16,7 +16,9 @@ passport.use(
       clientID: process.env.GH_ID,
       clientSecret: process.env.GH_SECRET,
       scope: ["user:email"],
-      callbackURL: `http://localhost:4000${routes.githubCallback}`,
+      callbackURL: process.env.PRODUCTION
+        ? `https://mighty-thicket-73310.herokuapp.com${routes.githubCallback}`
+        : `http://localhost:4000${routes.githubCallback}`,
     },
     githubLoginCallback
   )
@@ -27,7 +29,9 @@ passport.use(
     {
       clientID: process.env.FB_ID,
       clientSecret: process.env.FB_SECRET,
-      callbackURL: `https://e2242234d760.ngrok.io${routes.facebookCallback}`,
+      callbackURL: process.env.PRODUCTION
+        ? `https://mighty-thicket-73310.herokuapp.com${routes.facebookCallback}`
+        : `https://e2242234d760.ngrok.io${routes.facebookCallback}`,
     },
     facebookLoginCallback
   )

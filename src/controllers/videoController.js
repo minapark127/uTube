@@ -1,4 +1,4 @@
-import ffmpeg from "fluent-ffmpeg";
+// import ffmpeg from "fluent-ffmpeg";
 import Video from "../models/Video";
 import Comment from "../models/Comment";
 import AnonymousUser from "../models/AnonymousUser";
@@ -64,7 +64,7 @@ export const videoDetail = async (req, res) => {
     params: { id },
   } = req;
 
-  let videoDuration;
+  // let videoDuration;
 
   try {
     const video = await Video.findById(id)
@@ -80,15 +80,20 @@ export const videoDetail = async (req, res) => {
         ],
       });
 
-    ffmpeg.ffprobe(`${video.fileUrl}`, (err, metadata) => {
-      const fileDuration = metadata.format.duration;
-      videoDuration = fileDuration.toString();
-      res.render("videoDetail", {
-        pageTitle: "Video Detail",
-        video,
-        videoDuration,
-      });
+    res.render("videoDetail", {
+      pageTitle: "Video Detail",
+      video,
     });
+
+    // ffmpeg.ffprobe(`${video.fileUrl}`, (err, metadata) => {
+    //   const fileDuration = metadata.format.duration;
+    //   videoDuration = fileDuration.toString();
+    //   res.render("videoDetail", {
+    //     pageTitle: "Video Detail",
+    //     video,
+    //     videoDuration,
+    //   });
+    // });
   } catch (error) {
     console.log(error);
     res.redirect(routes.home);
