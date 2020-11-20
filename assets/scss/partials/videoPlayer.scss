@@ -51,21 +51,24 @@
           transition: width 0.8s linear;
           margin-right: 10px;
         }
-        &__time {
-          display: flex;
-          span:first-child {
-            text-align: right;
-          }
-          span:nth-child(2) {
-            margin: 0 7px;
-            text-align: center;
-          }
-          span:last-child {
-            text-align: left;
-          }
-          span:not(:nth-child(2)) {
-            min-width: 68px;
-          }
+      }
+      &__time {
+        display: flex;
+        span:first-child {
+          text-align: right;
+        }
+        span:nth-child(2) {
+          margin: 0 7px;
+          text-align: center;
+        }
+        span:nth-child(3) {
+          text-align: left;
+        }
+        span:not(:nth-child(2)) {
+          min-width: 68px;
+        }
+        #js-timeBar-hidden {
+          display: none;
         }
       }
     }

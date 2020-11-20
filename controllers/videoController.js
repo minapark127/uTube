@@ -81,13 +81,15 @@ export const videoDetail = async (req, res) => {
       });
 
     ffmpeg.ffprobe(`${video.fileUrl}`, (err, metadata) => {
-      const fileDuration = metadata.format.duration;
-      videoDuration = fileDuration.toString();
-      res.render("videoDetail", {
-        pageTitle: "Video Detail",
-        video,
-        videoDuration,
-      });
+      if (metadata) {
+        const fileDuration = metadata.format.duration;
+        videoDuration = fileDuration.toString();
+        res.render("videoDetail", {
+          pageTitle: "Video Detail",
+          video,
+          videoDuration,
+        });
+      }
     });
   } catch (error) {
     console.log(error);

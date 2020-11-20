@@ -88,8 +88,9 @@ const formatTime = (seconds) => {
 };
 
 const setVideoTime = async () => {
-  const videoDuration = totalTimebar.innerHTML;
-  if (isNaN(videoDuration)) {
+  const totalDuration = document.querySelector("#js-timeBar-hidden");
+  const videoDuration = parseInt(totalDuration.innerHTML, 10);
+  if (Number.isNaN(videoDuration)) {
     const blobUrl = video.src;
     const duration = await getBlobDuration(blobUrl);
     totalTimebar.innerHTML = formatTime(duration);
