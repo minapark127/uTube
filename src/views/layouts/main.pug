@@ -10,6 +10,7 @@ html
         integrity=FONTAWESOME_KEY,
         crossorigin="anonymous")
         link(rel="stylesheet", href="/static/styles.css")
+        meta(http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://*.googleapis.com/ https://*.fontawesome.com/ https://*.gstatic.com https://*.s3.ap-southeast-2.amazonaws.com/utube-mina.park127/* https://*.emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/* 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://*.fontawesome.com/; media-src *; img-src * data: content:; ")
 
     body
         include ../partials/header
