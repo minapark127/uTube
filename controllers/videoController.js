@@ -40,17 +40,36 @@ export const getUpload = (req, res) => {
   res.render("upload", { pageTitle: "Upload" });
 };
 
+const getVideoDuration = (location) => {
+  return new Promise((res, rej) => {
+    return ffmpeg.ffprobe(location, (err, metadata) => {
+      if (err) {
+        return rej(err);
+      }
+      const {
+        format: { duration },
+      } = metadata;
+      return res(duration);
+    });
+  });
+};
+
 export const postUpload = async (req, res) => {
   const {
     body: { title, description },
     file: { location },
     user: { _id: id },
   } = req;
+
+  const videoDuration = await getVideoDuration(location);
+  console.log(videoDuration);
+
   const newVideo = await Video.create({
     fileUrl: location,
     title,
     description,
     creator: id,
+    duration: videoDuration,
   });
   req.user.videos.push(newVideo.id);
   req.user.save();
@@ -63,8 +82,6 @@ export const videoDetail = async (req, res) => {
   const {
     params: { id },
   } = req;
-
-  let videoDuration;
 
   try {
     const video = await Video.findById(id)
@@ -79,17 +96,9 @@ export const videoDetail = async (req, res) => {
           { path: "anonymousCreator", model: "AnonymousUser" },
         ],
       });
-
-    ffmpeg.ffprobe(`${video.fileUrl}`, (err, metadata) => {
-      if (metadata) {
-        const fileDuration = metadata.format.duration;
-        videoDuration = fileDuration.toString();
-        res.render("videoDetail", {
-          pageTitle: "Video Detail",
-          video,
-          videoDuration,
-        });
-      }
+    res.render("videoDetail", {
+      pageTitle: "Video Detail",
+      video,
     });
   } catch (error) {
     console.log(error);
