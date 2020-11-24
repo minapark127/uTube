@@ -5,7 +5,7 @@ block content
     .videoDetail
         +videoPlayer({
             src:video.fileUrl,
-            duration: videoDuration
+            duration: video.duration
         })(class="videoDetail__player")
         .videoDetail__info
             if loggedInUser && loggedInUser.id === video.creator.id

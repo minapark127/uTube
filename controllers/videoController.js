@@ -62,19 +62,31 @@ export const postUpload = async (req, res) => {
   } = req;
 
   const videoDuration = await getVideoDuration(location);
-  console.log(videoDuration);
-
-  const newVideo = await Video.create({
-    fileUrl: location,
-    title,
-    description,
-    creator: id,
-    duration: videoDuration,
-  });
-  req.user.videos.push(newVideo.id);
-  req.user.save();
-  req.flash("success", "Video uploaded");
-  res.redirect(routes.videoDetail(newVideo.id));
+  if (typeof videoDuration === "number") {
+    const newVideo = await Video.create({
+      fileUrl: location,
+      title,
+      description,
+      creator: id,
+      duration: videoDuration,
+    });
+    req.user.videos.push(newVideo.id);
+    req.user.save();
+    req.flash("success", "Video uploaded");
+    res.redirect(routes.videoDetail(newVideo.id));
+  } else {
+    const newVideo = await Video.create({
+      fileUrl: location,
+      title,
+      description,
+      creator: id,
+      duration: 0,
+    });
+    req.user.videos.push(newVideo.id);
+    req.user.save();
+    req.flash("success", "Video uploaded");
+    res.redirect(routes.videoDetail(newVideo.id));
+  }
 };
 
 // video detail
