@@ -51,6 +51,8 @@ const getVideoDuration = (location) => {
       } = metadata;
       return res(duration);
     });
+  }).catch(() => {
+    console.log("ERROR:promise rejected");
   });
 };
 
