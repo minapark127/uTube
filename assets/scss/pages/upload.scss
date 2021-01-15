@@ -4,4 +4,10 @@
   grid-template-columns: repeat(2, minmax(350px, 400px));
   justify-content: center;
   grid-gap: 50px;
+  @include responsive(tablet) {
+    display: block;
+    .recording__container {
+      display: none;
+    }
+  }
 }
