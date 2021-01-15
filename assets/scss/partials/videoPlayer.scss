@@ -15,6 +15,9 @@
     &:hover {
       background-color: rgba($color: $black, $alpha: 0.5);
     }
+    @include responsive(mobile) {
+      padding: 10px 15px;
+    }
     &__column {
       display: flex;
       align-items: center;
@@ -65,7 +68,7 @@
           text-align: left;
         }
         span:not(:nth-child(2)) {
-          min-width: 68px;
+          white-space: nowrap;
         }
         #js-timeBar-hidden {
           display: none;
