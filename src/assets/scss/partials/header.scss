@@ -68,6 +68,13 @@
         i {
           color: $white;
         }
+        @include responsive(mobile) {
+          background-color: inherit;
+          color: inherit;
+          i {
+            color: $white;
+          }
+        }
       }
       @include responsive(tablet) {
         width: 60px;

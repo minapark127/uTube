@@ -6,6 +6,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @include responsive(mobile) {
+    width: 95%;
+  }
   form {
     width: 100%;
     padding: 40px 5px;
@@ -25,20 +28,27 @@
       border-radius: 5px;
       box-shadow: 0 1px 10px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
       background-color: $white;
+      @include responsive(tablet) {
+        font-size: 16px;
+      }
     }
     textarea {
       border: $borderGrey;
       max-width: 90%;
     }
     input[type="submit"] {
+      all: unset;
       margin-top: 10px;
-      background-color: $darkRed;
-      color: $white;
+      font-size: 18px;
       cursor: pointer;
-      transition: background-color 0.2s linear;
+      width: 90%;
+      padding: 10px 0;
+      text-align: center;
+      border-radius: 5px;
+      @include coloredButton($darkRed);
       box-shadow: 0 1px 15px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-      &:hover {
-        @include buttonDarker($darkRed);
+      @include responsive(tablet) {
+        font-size: 16px;
       }
     }
   }
@@ -48,6 +58,9 @@
     label {
       font-weight: 300;
       font-size: 16px;
+      @include responsive(tablet) {
+        font-size: 14px;
+      }
     }
     input {
       margin-top: 10px;
@@ -63,6 +76,9 @@
     }
     span {
       text-decoration: underline;
+    }
+    @include responsive(tablet) {
+      font-size: 18px;
     }
   }
   &__link {

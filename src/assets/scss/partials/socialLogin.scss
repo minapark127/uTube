@@ -6,6 +6,8 @@
   button {
     color: $white;
     transition: background-color 0.2s linear;
+    border: none;
+    padding: 10px 0;
     &:not(:last-child) {
       margin-bottom: 15px;
     }
@@ -20,6 +22,9 @@
       &:visited {
         color: inherit;
       }
+    }
+    @include responsive(tablet) {
+      font-size: 16px;
     }
   }
   .social-login__GH {

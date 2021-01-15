@@ -49,4 +49,7 @@
       color: darken($color: $fbBlue, $amount: 20);
     }
   }
+  @include responsive(tablet) {
+    display: none;
+  }
 }
